@@ -1,0 +1,163 @@
+* {
+    font-family: "poppins";
+    margin: 0px;
+    color: #BB46C3;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.logo {
+    width: 50%;
+    padding-top: 1px;
+    padding-left: 60px;
+}
+
+.logodiv {
+    padding: 1.2% 2%;
+
+}
+
+ul {
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    padding: 0px;
+}
+
+li a {
+    text-decoration: none;
+    margin: 10px;
+    font-size: 85%;
+    color: #BB46C3;
+    padding: 3px 5px;
+}
+
+li a:hover {
+    text-decoration: none;
+    margin: 10px;
+    padding: 3px 5px;
+    font-size: 85%;
+    color: #5d1e61;
+    background-color: #fbc9ff;
+    border-radius: 50px;
+}
+
+.space{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    margin: auto;
+    max-width:100% ;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 4px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 0px solid #ffffff;
+    background-color: #fbc9ff;
+    color: #5b0b61;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+
+.searchicon{
+    margin-left: 10px;
+    margin-right: 3 0px;
+    border-radius: 50px;
+    border: #ffffff 1px ;
+}
+
+.searchicon:hover{
+    margin-left: 10px;
+    border-radius: 25px;
+    box-shadow: 1px 3px 3px 0px rgba(146, 146, 146, 0.574);
+    cursor: pointer;
+    border-radius: 50px;
+    border: #ffffff 1px;
+}
+
+.body{
+    margin-top: 10px ;
+}
+
+.ban{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    
+}
+
+.banner{
+    width: 100%;
+    justify-content: center;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.content{
+    display: flex;
+    /* flex-direction: row; */
+    padding: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dp{
+    border-radius: 500px;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.user{
+    font-size: 25px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.detailssub{
+    color: #86168e;
+    font-size: 13px;
+    background-color: #fbc9ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.pic{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.anim{
+    max-width: 40%;
+    justify-content: end;
+}
+
+.animation{
+    display: flex;
+    margin: auto;
+}
+
+.anim1{
+    max-width: 30%;
+    justify-content: end;
+}
+
+.animation1{
+    display: flex;
+    margin: auto;
+    justify-content: end;
+}
