@@ -49,7 +49,7 @@ if (isset($_SESSION['loggedin'])) {
 <body>
     <header class="nav">
         <!-- <div class="logodiv" >
-           
+
         </div> -->
 
         <div class="options">
@@ -122,7 +122,7 @@ if (isset($_SESSION['loggedin'])) {
 
                         <strong> <a href="user_art.php">Click to see your arts: </a> </strong>
 
-    
+
 
 
 

@@ -70,7 +70,7 @@
             $results = mysqli_query($link, $insert) or die(mysqli_error($link));
 
 
-            header('location:landing_page.php');
+            header('location:user_art.php');
         }
 
 
@@ -101,7 +101,7 @@
 
                     <label for="title">Title
 
-                      
+
 
 
                     </label>

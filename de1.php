@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
 
 $cat = $_GET['uid'];
@@ -114,16 +116,17 @@ $res = mysqli_query($link, $sql);
         justify-content: space-evenly;
         padding-left: 30px;
         padding-right: 0px;
-        margin-top: 10px;
+        margin-top: 50px;
     }
 
     .card {
         box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
         width: 28vw;
+        height: 280px;
         /* height: 20vh; */
         border-radius: 8px;
-        margin: 20px;
+        margin-left: 20px;
     }
 
     .card:hover {
@@ -138,9 +141,40 @@ $res = mysqli_query($link, $sql);
         float: left;
         /* display: flex; */
         /* justify-content: space-around; */
-        height:400px;
+        height: 400px;
 
 
+    }
+
+    .cardsss {
+        box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 28vw;
+        height: 25px;
+        /* height: 20vh; */
+        border-radius: 8px;
+        margin: 20px;
+    }
+
+    .cardsss:hover {
+        box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.5);
+        transition: 0.3s;
+        width: 28vw;
+        /* height: 20vh; */
+        border-radius: 8px;
+    }
+
+    .bhejo {
+        border-radius: 15px;
+        height: 30px;
+        width: 110px;
+        background-color: rgba(128, 0, 128, 0.2);
+        margin-bottom: 100px;
+        margin-left: 20px;
+        font-weight: lighter;
+        color: purple;
+        border: 0px;
+        cursor: pointer;
     }
 </style>
 
@@ -163,11 +197,11 @@ $res = mysqli_query($link, $sql);
         <div class="bar">
             <h1 class="text1">
 
-            Art Works
-               (<?php
+                Art Works
+                (<?php
                     echo $cat;
-                ?>)
-                
+                    ?>)
+
             </h1>
 
             <div class="space"></div>
@@ -195,17 +229,29 @@ $res = mysqli_query($link, $sql);
                         $price = $row['price'];
                         $title = $row['title'];
 
-                        $link = "image2.php?uid=$title&id=$name";
+                        $link = "im2.php?uid=$title&id=$name";
+                        $link2 = "Cart.php?uid=$title";
 
                     ?>
                         <div class="ab">
                             <a href="<?= $link ?>"> <img class="card" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" /></a>
+
+
+
+
                             <center>
-                                <p class="card">Price : <?php echo $price ?>Rs Only</p>
+                                <p class="cardsss"> <?php echo $title ?> ( <?php echo $price ?>Rs )</p>
+                                <form action="<?= $link2 ?>" method="POST">
+
+
+                                    <input value="Add to Cart" type="submit" class="bhejo"></input>
+                                    <input value="Buy now" type="submit" class="bhejo"></input>
+
+
+                                </form>
+
                             </center>
-                            <center>
-                                <p class="card">Title : <?php echo $title ?>Rs Only</p>
-                            </center>
+
 
                         </div>
 

@@ -1,23 +1,24 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
-
-    $remove = $_GET['id'];
-    $sql = "DELETE FROM image WHERE title='$remove';";
-    $res = mysqli_query($link, $sql);
-}
-?>
-
-
-<?php
 session_start();
-$link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
 
-$user = $_SESSION['username'];
-$sql = "SELECT* from image where username='$user' ";
-$res = mysqli_query($link, $sql);
-// echo $cat;
+
+if (isset($_SESSION['loggedin'])) {
+    $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
+    $title = $_GET['uid'];
+    $name = $_GET['id'];
+
+
+
+
+
+    $sql = "SELECT *  from image  where title='$title' and username='$name'";
+    $res = mysqli_query($link, $sql);
+
+    $result = mysqli_fetch_assoc($res);
+} else {
+    header('location:login.php');
+}
 
 ?>
 
@@ -127,17 +128,16 @@ $res = mysqli_query($link, $sql);
         justify-content: space-evenly;
         padding-left: 30px;
         padding-right: 0px;
-        margin-top: 50px;
+        margin-top: 10px;
     }
 
     .card {
         box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
         width: 28vw;
-        height: 280px;
         /* height: 20vh; */
         border-radius: 8px;
-        margin-left: 20px;
+        margin: 20px;
     }
 
     .card:hover {
@@ -156,37 +156,6 @@ $res = mysqli_query($link, $sql);
 
 
     }
-
-    .cardsss {
-        box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        width: 28vw;
-        height: 25px;
-        /* height: 20vh; */
-        border-radius: 8px;
-        margin: 20px;
-    }
-
-    .cardsss:hover {
-        box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.5);
-        transition: 0.3s;
-        width: 28vw;
-        /* height: 20vh; */
-        border-radius: 8px;
-    }
-
-    .bhejo {
-        border-radius: 15px;
-        height: 30px;
-        width: 110px;
-        background-color: rgba(128, 0, 128, 0.2);
-        margin-bottom: 100px;
-        margin-left: 20px;
-        font-weight: lighter;
-        color: purple;
-        border: 0px;
-        cursor: pointer;
-    }
 </style>
 
 
@@ -201,13 +170,18 @@ $res = mysqli_query($link, $sql);
                 <li><a href="">Account</a></li>
                 <!-- <li><a href="">Settings</a></li> -->
                 <!-- <li><a href="">Saved</a></li> -->
-                <li><a href="">About Us</a></li>
+                <!-- <li><a href="">About Us</a></li> -->
             </ul>
         </div>
 
         <div class="bar">
             <h1 class="text1">
-                MY Artworks
+
+
+                <?php
+                echo $title;
+                ?>
+
             </h1>
 
             <div class="space"></div>
@@ -226,51 +200,41 @@ $res = mysqli_query($link, $sql);
             <a href="#"><img class="card" src="classic.png" alt=""></a>
             <a href="#"><img class="card" src="illustration.png" alt=""></a> -->
 
-            <!-- <div>
-                YOU HAVE UPLOADED <?php
-                                    // $num=$res->num_rows;
-                                    // echo $num;
-                                    ?> Arts
-            </div> -->
 
-            <?php if ($res->num_rows > 0) { ?>
+
+            <div>
+
+                <div class="ab" style="float: left;">
+                    <img class="card" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($result['image']); ?>" />
+                </div>
 
                 <div>
-                    <?php while ($row = $res->fetch_assoc()) {
-                        $title = $row['title'];
-                        $name = $row['username'];
-                        $price = $row['price'];
+                    <?php
 
-                        $link = "im2.php?uid=$title&id=$name";
-                        $link2 = "user_art.php?id=$title";
+                    $sql = "SELECT username ,dob,mobile_no,email from newcustomer where newcustomer.username='$name'";
+                    $res = mysqli_query($link, $sql);
+                    echo '<table border="1"><tr><th>CUSTOMER NAME</th><th>CUSTOMER dob</th><th>gender</th><th>
+email </th></tr>';
+                    while ($result = mysqli_fetch_assoc($res)) {
+                        echo '<tr><td>' . $result['username'] . '</td>
+       <td>' .
+                            $result['dob'] . '</td><td>' . $result['mobile_no'] . '</td><td>' . $result['email'] . '</td>
+            </tr>';
+                    }
+                    echo '</table>';
+
+
 
 
                     ?>
-                        <div class="ab">
-                            <a href="<?= $link ?>"> <img class="card" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" /></a>
-                            <center>
-                                <p class="cardsss"> <?php echo $title ?> ( <?php echo $price ?>Rs )</p>
-                                <form action="<?= $link2 ?>" method="POST">
-
-                                    <input value="Remove" type="submit" class="bhejo"></input>
-
-
-                                </form>
-
-                            </center>
-
-                        </div>
-
-                    <?php } ?>
                 </div>
-            <?php } else { ?>
-                <p class="status error">Image(s) not found...</p>
-            <?php } ?>
 
 
 
+
+
+            </div>
         </div>
-    </div>
 
     </div>
 </body>

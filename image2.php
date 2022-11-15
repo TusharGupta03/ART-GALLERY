@@ -8,7 +8,7 @@ if (isset($_SESSION['loggedin'])) {
     $title = $_GET['uid'];
     $name = $_GET['id'];
 
-    
+
 
 
 

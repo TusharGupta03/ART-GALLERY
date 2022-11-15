@@ -1,10 +1,15 @@
+
+
+
+
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
+    $_SESSION['time'] = time();
     $username = $_POST['username'];
     $password = $_POST['pwd'];
-    $_SESSION['loggedin']='log';
+    $_SESSION['loggedin'] = 'log';
 
     $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
     $query = "select username ,password from newcustomer where username='$username' and password='$password' ";
@@ -78,9 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $query = "SELECT * FROM newcustomer WHERE username = '$username'";
                             $result = mysqli_query($link, $query);
                             if ($result) {
-                                if (mysqli_num_rows($result) < 1) {
-                                    echo '<span style="color: red;">username is incorrect </span>';
-                                }
+                                echo '<span style="color: red;">username is incorrect </span>';
                             }
                         }
                         ?>

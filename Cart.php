@@ -1,26 +1,75 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
+// session_start();
 
-    $remove = $_GET['id'];
-    $sql = "DELETE FROM image WHERE title='$remove';";
-    $res = mysqli_query($link, $sql);
-}
+
+
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
+
+//     $remove = $_GET['uid'];
+//     $sql = "DELETE FROM image WHERE title='$remove';";
+//     $res = mysqli_query($link, $sql);
+// }
+// else
+// {
+//     echo "NOT DONE ";
+// }
+
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php
 session_start();
-$link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
 
-$user = $_SESSION['username'];
-$sql = "SELECT* from image where username='$user' ";
-$res = mysqli_query($link, $sql);
-// echo $cat;
+if (isset($_SESSION['loggedin'])) {
+    $remove = $_GET['uid'];
+    $name = $_SESSION['username'];
+    $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
 
-?>
 
+    $insert = "INSERT INTO c (image,title,customername)
+SELECT image,title,newcustomer.username
+FROM image,newcustomer
+WHERE title='$remove'
+and newcustomer.username='$name'";
+
+
+    $results = mysqli_query($link, $insert) or die(mysqli_error($link));
+} else {
+    header('location:login.php');
+} ?>
 
 
 <!DOCTYPE html>
@@ -190,89 +239,47 @@ $res = mysqli_query($link, $sql);
 </style>
 
 
-<body>
-    <div class="all">
-        <div class="nav">
+<?php
 
-            <ul>
-                <li><img class="logo" src="logo.png" alt=""></li>
-                <li><a href="home_1.php">Home</a></li>
-                <!-- <li><a href="">Explore</a></li> -->
-                <li><a href="">Account</a></li>
-                <!-- <li><a href="">Settings</a></li> -->
-                <!-- <li><a href="">Saved</a></li> -->
-                <li><a href="">About Us</a></li>
-            </ul>
-        </div>
 
-        <div class="bar">
-            <h1 class="text1">
-                MY Artworks
-            </h1>
+?>
 
-            <div class="space"></div>
 
-            <div class="animation">
-                <img class="anim" src="https://media4.giphy.com/media/SmVVp30ymr3OznAOVj/giphy.gif?cid=ecf05e47p4ocmh47bswc4kpaagrcqn53nc69884wbyvvf8aa&rid=giphy.gif&ct=s" alt="">
+<?php
+$link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
+$query = "select * from c where customername='$name' ";
+$result = mysqli_query($link, $query);
+
+?>
+<?php if ($result->num_rows > 0) { ?>
+
+    <div>
+        <?php while ($row = $result->fetch_assoc()) {
+            $title = $row['title'];
+            $name = $row['customername'];
+
+            $link = "im2.php?uid=$title&id=$name";
+            $link2 = "user_art.php?id=$title";
+
+
+        ?>
+            <div class="ab">
+                <a href="<?= $link ?>"> <img class="card" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" /></a>
+                <center>
+                    <p class="cardsss"> <?php echo $title ?> </p>
+                    <form action="<?= $link2 ?>" method="POST">
+
+                        <input value="Remove" type="submit" class="bhejo"></input>
+
+
+                    </form>
+
+                </center>
+
             </div>
 
-        </div>
-
-
-
-        <div class=" filters">
-            <!-- <a href="#"><img class="card" src="retro.png" alt=""></a> -->
-            <!-- <a href="#"><img class="card" src="abstract.png" alt=""></a>
-            <a href="#"><img class="card" src="classic.png" alt=""></a>
-            <a href="#"><img class="card" src="illustration.png" alt=""></a> -->
-
-            <!-- <div>
-                YOU HAVE UPLOADED <?php
-                                    // $num=$res->num_rows;
-                                    // echo $num;
-                                    ?> Arts
-            </div> -->
-
-            <?php if ($res->num_rows > 0) { ?>
-
-                <div>
-                    <?php while ($row = $res->fetch_assoc()) {
-                        $title = $row['title'];
-                        $name = $row['username'];
-                        $price = $row['price'];
-
-                        $link = "im2.php?uid=$title&id=$name";
-                        $link2 = "user_art.php?id=$title";
-
-
-                    ?>
-                        <div class="ab">
-                            <a href="<?= $link ?>"> <img class="card" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" /></a>
-                            <center>
-                                <p class="cardsss"> <?php echo $title ?> ( <?php echo $price ?>Rs )</p>
-                                <form action="<?= $link2 ?>" method="POST">
-
-                                    <input value="Remove" type="submit" class="bhejo"></input>
-
-
-                                </form>
-
-                            </center>
-
-                        </div>
-
-                    <?php } ?>
-                </div>
-            <?php } else { ?>
-                <p class="status error">Image(s) not found...</p>
-            <?php } ?>
-
-
-
-        </div>
+        <?php } ?>
     </div>
-
-    </div>
-</body>
-
-</html>
+<?php } else { ?>
+    <p class="status error">Image(s) not found...</p>
+<?php } ?>
