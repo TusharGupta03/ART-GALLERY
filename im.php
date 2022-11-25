@@ -107,6 +107,10 @@
                     </label>
                     <input type="text" class="name" name="title" /><br />
 
+                    <label for="title">Descreption
+
+                    <input type="text" class="name" name="des" /><br />
+
                     <div class="side">
 
                         <label for="date">Date</label>

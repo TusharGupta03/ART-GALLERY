@@ -22,45 +22,9 @@ if (isset($_SESSION['loggedin'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/3269c53e41.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Ubuntu&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 <style>
-    #footer {
-        text-align: center;
-        display:flex;
-        margin-top: 30px;
-        background-color: #BB46C3;
-    }
-
-    .logo {
-        width: 10px;
-        margin-top: 20px;
-    }
-
-    .logo1{
-        margin-left: 600px;
-    }
-
-    .logo:hover {
-        color: blue;
-    }
-
-    .footer-text {
-        color: black;
-        font-weight: bolder;
-        background-color: #BB46C3;
-        padding-bottom: 30px;
-    }
-
     .ball {
         height: 18px;
         width: 12px;
@@ -104,10 +68,8 @@ if (isset($_SESSION['loggedin'])) {
             <input type="text" class="search" placeholder="Search" name="search">
         </form>
 
-        <!-- <img class="searchicon" src="icon1.png" alt=""> -->
 
         <?php
-        // session_start();
         if (isset($_SESSION['loggedin'])) {
         ?>
 
@@ -127,7 +89,6 @@ if (isset($_SESSION['loggedin'])) {
                         <span>
 
                             <span style="margin-bottom:0px; margin-left: 47px; margin-right: 9px; padding-bottom: 0px; display: -webkit-box; height: 22px;">
-                                <!-- <button class="ball" placeholder="sdf"></button> -->
                                 <div class="ball">
                                     <?= $item ?>
                                 </div>
@@ -136,7 +97,7 @@ if (isset($_SESSION['loggedin'])) {
                             <span>
 
 
-                                <a href="account.html"> <img src="cart1.jpg" alt="" style="width: 34px;
+                                <a href="Cart.php"> <img src="cart1.jpg" alt="" style="width: 34px;
                             height: 34px ;
 padding-left:12px;
                             padding-right: 13px;
@@ -163,7 +124,7 @@ padding-left:12px;
                             <span>
 
 
-                                <a href="account.html"> <img src="cart1.jpg" alt="" style="width: 34px;
+                                <a href="Cart.php"> <img src="cart1.jpg" alt="" style="width: 34px;
 height: 34px ;
 padding-left:12px;
 padding-right: 13px;
@@ -283,16 +244,7 @@ padding-right: 13px;
 
     </div>
 
-    <footer id="footer">
-        <i class="logo logo1 fa-brands fa-twitter"></i>
-        <i class="logo fa-brands fa-facebook"></i>
-        <i class="logo fa-brands fa-instagram"></i>
-        <i class="logo fa-brands fa-linkedin-in"></i>
-        <br>
 
-
-    </footer>
-    <p align="center" class="footer-text">© Copyright</p>
 </body>
 
 </html>

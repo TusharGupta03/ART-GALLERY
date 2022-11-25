@@ -1,0 +1,222 @@
+*{
+    font-family: "poppins";
+    color: blueviolet;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.logo {
+    width: 50%;
+    padding-top: 1px;
+    padding-left: 60px;
+}
+
+.logodiv {
+    padding: 1.2% 2%;
+
+}
+
+ul {
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    padding: 0px;
+}
+
+li a {
+    text-decoration: none;
+    margin: 10px;
+    font-size: 85%;
+    color: #BB46C3;
+    padding: 3px 10px;
+}
+
+li a:hover {
+    text-decoration: none;
+    margin: 10px;
+    padding: 3px 10px;
+    font-size: 85%;
+    color: #5d1e61;
+    background-color: #fbc9ff;
+    border-radius: 50px;
+}
+
+.space{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    max-width:100% ;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 4px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 0px solid #ffffff;
+    background-color: #fbc9ff;
+    color: #5b0b61;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+
+.searchicon{
+    margin-left: 10px;
+    border-radius: 50px;
+    border: #ffffff 1px ;
+}
+
+.searchicon:hover{
+    margin-left: 10px;
+    border-radius: 25px;
+    box-shadow: 1px 3px 3px 0px rgba(146, 146, 146, 0.574);
+    cursor: pointer;
+    border-radius: 50px;
+    border: #ffffff 1px;
+}
+
+
+.navbuttons{
+    display: flex;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.buttonnavdiv{
+    /* padding-top: 20px; */
+    display: flex;
+    /* justify-content: center; */
+}
+
+.buttonnav {
+    
+    /* width: 30%; */
+    padding: 4px 20px;
+    margin: 23px 10px;
+    display: inline-block;
+    background-color: #ffffff;
+    border: 1px solid #C565CC;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: "poppins";
+    color: #b639be;
+    /* box-shadow: 0px 3px 5px 0px rgba(0,1,17,0.33); */
+}
+
+.buttonnav:hover {
+    /* width: 30%; */
+    padding: 4px 20px;
+    margin: 23px 10px;
+    display: inline-block;
+    background-color: #5b0b61;
+    /* border: 1px solid #f7f7f7; */
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: "poppins";
+    color: #ffffff;
+    box-shadow: 0px 3px 5px 0px rgba(0,1,17,0.33);
+    backdrop-filter: blur(95px);
+    -webkit-backdrop-filter: blur(80px);
+    cursor: pointer;
+    -moz-animation: all .4s ease-in-out;
+    -webkit-animation: all .4s ease-in-out;
+    -o-animation: all .4s ease-in-out;
+    animation: all .4s ease-in-out;
+}
+
+
+.head{
+    font-size: 45px;
+    font-weight: 600;
+    /* margin: 40px 70px 60px 30px; */
+    padding-left: 20px;
+    /* display: flex; */
+    text-align: center;
+    margin: auto;
+}
+
+.body{
+    display: flex;
+    align-items: flex-start;
+    padding-left: 240px;
+    padding-right: 380px;
+    margin-top: 50px;
+
+}
+
+.content{
+    padding-left: 45px;
+    margin-top: 50px;
+}
+
+.name{
+    font-size: 35px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.image{
+    width: 10vh;
+    height: 50vh;
+    border-radius: 20px;
+}
+
+.price{
+    font-size: 25px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+
+.buy{
+    /* padding-top: 20px; */
+    display: flex;
+    /* justify-content: center; */
+}
+
+.btns{
+    display: flex;
+}
+
+.buybtn {
+    
+    /* width: 30%; */
+    padding: 6px 25px;
+    margin: 45px 10px;
+    display: inline-block;
+    background-color: #ffffff;
+    border: 1px solid blueviolet;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: "poppins";
+    color: blueviolet;
+    /* box-shadow: 0px 3px 5px 0px rgba(0,1,17,0.33); */
+}
+
+.buybtn:hover {
+    /* width: 30%; */
+    padding: 6px 25px;
+    margin: 45px 10px;
+    display: inline-block;
+    background-color: blueviolet;
+    /* border: 1px solid #f7f7f7; */
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: "poppins";
+    color: #ffffff;
+    box-shadow: 0px 3px 5px 0px rgba(0,1,17,0.33);
+    backdrop-filter: blur(95px);
+    -webkit-backdrop-filter: blur(80px);
+    cursor: pointer;
+    -moz-animation: all .4s ease-in-out;
+    -webkit-animation: all .4s ease-in-out;
+    -o-animation: all .4s ease-in-out;
+    animation: all .4s ease-in-out;
+}
+.btn{
+    margin-right: 30px;
+}

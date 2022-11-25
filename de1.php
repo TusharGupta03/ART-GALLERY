@@ -1,12 +1,17 @@
 <?php
 session_start();
 
-$link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
+if (isset($_SESSION['loggedin'])) {
 
+    $name = $_SESSION['username'];
+}
+$link3 = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
 $cat = $_GET['uid'];
 $sql = "SELECT* from image where category='$cat' ";
-$res = mysqli_query($link, $sql);
+$res = mysqli_query($link3, $sql);
 // echo $cat;
+
+
 
 ?>
 
@@ -187,7 +192,7 @@ $res = mysqli_query($link, $sql);
                 <li><img class="logo" src="logo.png" alt=""></li>
                 <li><a href="home_1.php">Home</a></li>
                 <!-- <li><a href="">Explore</a></li> -->
-                <li><a href="">Account</a></li>
+                <li><a href="account.php">Account</a></li>
                 <!-- <li><a href="">Settings</a></li> -->
                 <!-- <li><a href="">Saved</a></li> -->
                 <!-- <li><a href="">About Us</a></li> -->
@@ -223,7 +228,10 @@ $res = mysqli_query($link, $sql);
             <?php if ($res->num_rows > 0) { ?>
 
                 <div>
-                    <?php while ($row = $res->fetch_assoc()) {
+                    <?php
+
+                    $name1 = $_SESSION['username'];
+                    while ($row = $res->fetch_assoc()) {
                         $title = $row['title'];
                         $name = $row['username'];
                         $price = $row['price'];
@@ -231,6 +239,10 @@ $res = mysqli_query($link, $sql);
 
                         $link = "im2.php?uid=$title&id=$name";
                         $link2 = "Cart.php?uid=$title";
+
+                        $query = "select * from c where title='$title' and customername='$name1'";
+                        $result = mysqli_query($link3, $query);
+
 
                     ?>
                         <div class="ab">
@@ -243,9 +255,30 @@ $res = mysqli_query($link, $sql);
                                 <p class="cardsss"> <?php echo $title ?> ( <?php echo $price ?>Rs )</p>
                                 <form action="<?= $link2 ?>" method="POST">
 
+                                    <?php
+                                    if (mysqli_num_rows($result) > 0) {
+                                    ?>
 
-                                    <input value="Add to Cart" type="submit" class="bhejo"></input>
-                                    <input value="Buy now" type="submit" class="bhejo"></input>
+                                        <!-- <input value="Added" type="submit" class="bhejo"></input> -->
+                                        <h4 class="bhejo">Added</h4>
+
+                                    <?php
+                                    } else { ?>
+
+                                        <input value="Add to Cart" type="submit" class="bhejo"></input>
+                                        <input value="Buy now" type="submit" class="bhejo"></input>
+
+                                    <?php
+
+                                    } ?>
+
+
+
+
+
+
+
+
 
 
                                 </form>

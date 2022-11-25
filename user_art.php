@@ -5,7 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $remove = $_GET['id'];
     $sql = "DELETE FROM image WHERE title='$remove';";
+    $sql2 = "DELETE FROM c WHERE title='$remove';";
+
     $res = mysqli_query($link, $sql);
+    $res2 = mysqli_query($link, $sql2);
 }
 ?>
 

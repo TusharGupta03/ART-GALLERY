@@ -101,7 +101,7 @@
                             <option class="opt" value="other" hidden selected>Select Gender</option>
 
                         </select> -->
-                        <input type="text" class="abc" name="gender">
+                        <input type="number" class="abc" name="gender">
 
                     </div>
 

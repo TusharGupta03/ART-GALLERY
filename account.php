@@ -10,22 +10,6 @@ if (isset($_SESSION['loggedin'])) {
     $sql = "SELECT name,username ,dob,mobile_no,email from newcustomer where newcustomer.username='$name'";
     $res = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($res);
-
-
-
-
-
-    //     echo '<table border="1"><tr><th>CUSTOMER NAME</th><th>CUSTOMER dob</th><th>gender</th><th>
-    // email </th></tr>';
-    //     while ($result = mysqli_fetch_assoc($res)) {
-    //         echo '<tr><td>' . $result['username'] . '</td>
-    //            <td>' .
-    //             $result['dob'] . '</td><td>' . $result['gender'] . '</td><td>' . $result['email'] . '</td>
-    //                 </tr>';
-    //     }
-    //     echo '</table>';
-
-
 } else {
     header('location:login.php');
 }
@@ -48,9 +32,6 @@ if (isset($_SESSION['loggedin'])) {
 
 <body>
     <header class="nav">
-        <!-- <div class="logodiv" >
-
-        </div> -->
 
         <div class="options">
 
@@ -61,17 +42,18 @@ if (isset($_SESSION['loggedin'])) {
                 <li><a href="account.php">Account</a></li>
                 <!-- <li><a href="">Settings</a></li> -->
                 <!-- <li><a href="">Saved</a></li> -->
-                <li><a href="">About Us</a></li>
+                <li><a href="home_1.php#about">About Us</a></li>
             </ul>
         </div>
 
-        <!-- <div class="space"></div>
+        <div class="space"></div>
 
-        <form class="searchform" action="/action_page.php">
-            <input type="text" class="search" placeholder="Search" name="search">
-        </form>
+        <div class="btn">
+            <ul>
+                <li><a href="logout.php">Log Out</a></li>
+            </ul>
+        </div>
 
-        <img class="searchicon" src="icon1.png" alt=""> -->
 
 
     </header>
@@ -81,25 +63,34 @@ if (isset($_SESSION['loggedin'])) {
             <img class="ban" src="banner2.png" alt="">
         </div>
 
-        <div class="main">
+        <div class="main1">
             <!-- <div class="animation">
                 <img class="anim" src="https://media0.giphy.com/media/yH6LWrrwHUUW6TssXZ/giphy.gif?cid=ecf05e47yln29mgyqe1bsocit9awid6xshmkw1zsfqy7wmce&rid=giphy.gif&ct=s" alt="">
-             </div> -->
+            </div> -->
 
             <div class="content">
-                <div class="pic">
-                    <img class="dp" src="me.png" alt="">
-                </div>
+                <div class="main">
+                    <div class="pic">
+                        <img class="dp" src="https://media1.giphy.com/media/TvMVORj5GsjreUpfxX/200w.webp" alt="">
+                        <!-- <img class="dp" src="me.png" alt=""> -->
+                    </div>
+                    <div class="name">
+                        <div class="usernametxt">
+                            <?php
+                            echo $result['username'];
 
-                <div class="details">
-                    <div class="user">
-
-                        <?php
-                        echo $result['username'];
-
-                        ?>
+                            ?>
+                        </div>
 
                     </div>
+                </div>
+
+
+                <div class="details">
+
+
+
+
                     <div class="detailssub">
                         <?php
                         echo $result['name'];
@@ -120,44 +111,62 @@ if (isset($_SESSION['loggedin'])) {
                         <br>
 
 
-                        <strong> <a href="user_art.php">Click to see your arts: </a> </strong>
+                        <!-- <strong> <a href="user_art.php">Click to see your arts: </a> </strong> -->
 
 
 
 
 
-                        <?php
-                        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        //     // session_start();
-                        //     $username = $_POST['username'];
-                        //     $password = $_POST['pwd'];
-                        //     $_SESSION['loggedin'] = 'log';
 
-                        //     $link = mysqli_connect('localhost', 'root', '', 'art_gallery') or die('Unable to connect the server. ');
-                        //     $query = "select admin_id ,admin_password from admin where admin_id='$username' and admin_password='$password' ";
-                        //     $result = mysqli_query($link, $query);
-                        //     if ($result1 = mysqli_fetch_assoc($result)) {
-                        //         $_SESSION['username'] = $result1['username'];
-                        ?>
-                                <!-- <strong> <a href="user_art.php">Click to see your arts: </a> </strong> -->
-                        <?php
-                        //         exit();
-                        //     }
-                        // }
-                        ?>
 
 
                     </div>
+
+                    <div class="user">
+
+                        <div class="count">
+                            
+                            
+                            <div class="textcount">
+                                Uploaded
+                            </div>
+
+                        </div>
+
+
+                        <div class="clickdiv">
+                            <strong> <a class="click" href="user_art.php"> View </a> </strong>
+                        </div>
+
+                    </div>
+                    <div class="user">
+
+                        <div class="count">
+
+                            
+                            <div class="textcount">
+                                Purchased
+                            </div>
+
+                        </div>
+
+
+                        <div class="clickdiv">
+                            <strong> <a class="click" href="orders.php"> View </a> </strong>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
-            <!-- <div class="animation1">
+            <div class="animation1">
                 <img class="anim1" src="https://media1.giphy.com/media/ZEHhZuaNtWnF55kbs8/giphy.gif?cid=ecf05e47i41m4m1ylu9rl3f9l8y8ovgajqoq83tdfojew03u&rid=giphy.gif&ct=s" alt="">
-             </div>
-        </div> -->
-
-
+            </div>
         </div>
+
+
+    </div>
 </body>
 
 </html>
